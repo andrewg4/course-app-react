@@ -4,7 +4,8 @@ import {BrowserRouter, Route} from "react-router-dom";
 import HomePage from "./HomePage";
 import AboutPage from "./AboutPage";
 import Header from "./Header";
-import Course from "./CoursesPage";
+import CoursesPage from "./CoursesPage";
+import ManageCoursePage from "./course/ManageCoursePage";
 
 class App extends Component {
     render() {
@@ -15,7 +16,8 @@ class App extends Component {
                         <Header/>
                         <Route exact path="/" component={HomePage}/>
                         <Route path="/about" component={AboutPage}/>
-                        <Route path="/course" component={Course}/>
+                        <Route path="/courses" component={CoursesPage}/>
+                        <Route path="/course/:id" component={ManageCoursePage}/>
                     </div>
                 </BrowserRouter>
             </div>

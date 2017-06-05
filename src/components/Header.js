@@ -10,7 +10,7 @@ class Header extends Component {
                 {" | "}
                 <NavLink to="/about" activeClassName="active">About</NavLink>
                 {" | "}
-                <NavLink to="/course" activeClassName="active">Course</NavLink>
+                <NavLink to="/courses" activeClassName="active">Courses</NavLink>
             </nav>
         );
     }
