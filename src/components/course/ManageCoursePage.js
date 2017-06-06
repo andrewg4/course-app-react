@@ -15,6 +15,7 @@ class ManageCoursePage extends Component {
         };
 
         this.updateCourseState = this.updateCourseState.bind(this);
+        this.saveCourseMethod = this.saveCourseMethod.bind(this);
     }
 
     updateCourseState(event) {
@@ -24,11 +25,19 @@ class ManageCoursePage extends Component {
         return this.setState({course: course});
     }
 
+    saveCourseMethod(event) {
+        event.preventDefault();
+        this.props.actions.saveCourse(this.state.course);
+        this.props.history.push('/courses');
+
+    }
+
     render() {
         return (
             <CourseForm
                 allAuthors={this.props.authors}
                 onChange={this.updateCourseState}
+                onSave={this.saveCourseMethod}
                 errors={this.state.errors}
                 course={this.state.course}/>
         );
@@ -37,7 +46,8 @@ class ManageCoursePage extends Component {
 
 ManageCoursePage.propTypes = {
     course: PropTypes.object.isRequired,
-    authors: PropTypes.array.isRequired
+    authors: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

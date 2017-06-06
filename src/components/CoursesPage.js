@@ -4,10 +4,26 @@ import * as courseActions from "../actions/courseActions";
 import PropTypes from "prop-types";
 import {bindActionCreators} from "redux";
 import CourseList from "./course/CourseList";
+import {withRouter} from "react-router-dom";
+
+const redirectToAddCoursePage = withRouter(({history}) => {
+    history.push('/blah');
+    console.log('asd')
+});
 
 class CoursesPage extends Component {
     constructor(props, context) {
         super(props, context);
+        this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this)
+    }
+
+    redirectToAddCoursePage() {
+        console.log('redirectToAddCoursePage');
+    }
+
+    componentDidMount() {
+        console.log("did mount");
+        this.props.actions.loadCourses();
     }
 
     // courseRow(course, index) {
@@ -20,6 +36,7 @@ class CoursesPage extends Component {
         return (
             <div>
                 <h1>Courses</h1>
+                <input type="submit" value="Add course" className="btn btn-primary" onClick={this.redirectToAddCoursePage}/>
                 <CourseList courses={courses}/>
                 <h2>Add course</h2>
             </div>
